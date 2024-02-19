@@ -21,12 +21,34 @@ function handleKeyboardKeyUpEvent(event){
     // check matched or not
     if(playerPressed === expectedAlphabet){
         console.log('you get a point')
-        console.log('you have correctly pressed', expectedAlphabet)
+        // update score
+        // 1. get the current score
+        const currentScoreElement = document.getElementById('current-score');
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText)
+        console.log(currentScore)
+        // 2. increase the score by one
+        const newScore = currentScore + 1;
+  
+        // 3. show the update score
+        currentScoreElement.innerText = newScore; 
+
         removeBackGroundColorById(expectedAlphabet)
         continueGame();
     }
     else{
         console.log('you missed. you lost a life')
+        // get the current life number
+        const currentLifeElement = document.getElementById('current-life')
+        const currentLifeText = currentLifeElement.innerText;
+        const currentLife = parseInt(currentLifeText)
+        // step 2 reduce the life count
+
+        const newLife = currentLife - 1;
+        // display the update life count;
+        currentLifeElement.innerText = newLife
+
+
     }
 
 }
